@@ -38,7 +38,8 @@ class EtlPipelineCdkStack(core.Stack): # BenjaminfarrStack
             self, "Bucket",
             bucket_name="asteroids",
             versioned=False,
-            public=False
+            public=False,
+            removal_policy=core.RemovalPolicy.DESTROY # NOT recommended for production code
         )
 
         ddb_asteroids_table = ddb.Table(
@@ -47,7 +48,8 @@ class EtlPipelineCdkStack(core.Stack): # BenjaminfarrStack
             partition_key={
                 "name": "id",
                 "type": ddb.AttributeType.STRING
-            }
+            },
+            removal_policy=core.RemovalPolicy.DESTROY # NOT recommended for production code
         )
 
         # Lambdas and layers
