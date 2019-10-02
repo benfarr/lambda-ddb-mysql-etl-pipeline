@@ -48,6 +48,7 @@ It also tells pip to run python `setup.py` develop to install the code in the `e
 with your NASA key that was emailed to you.** 
 3) Navigate to the `app.py` file and replace this text `<acct_id>` with your AWS account id 
 and `<region_id>` with the region you plan to work in--e.g. `us-west-2` for Oregon and `us-east-1` for N. Virginia.
+4) Via macOS cli, run this command to set `preprod` env variable: `export AWS_CDK_ENV=preprod`
 
 **Yes, this is not best practice. We should be using Secrets Manager to store these keys. 
 I have included the required code to extract those along with some commented notes in my sample of how this is achieved. 
@@ -117,16 +118,15 @@ command.
 Destroying Resources:
 
 After you are finished with this app, you can run `cdk destroy` to quickly remove the majority 
-of the stack's resources. However, some resources will NOT automatically be destroyed as they 
-require an explicit destroy permission that I didn't set up. Here is a list of resources you'll 
-need to manually delete post-destroy:
-1) DynamoDB Table
-2) S3 bucket
-3) CloudWatch Log Groups
-4) s3 CDK folder with your CloudFormation templates. Delete at your discretion. 
-5) Your bootstrap stack asset s3 folder will have some assets in there. Delete/save at your discretion. 
+of the stack's resources. However, some resources will NOT automatically be destroyed and require
+some manual intervention. Here is a list directions of what you must do:
+1) S3 bucket: You must first delete all files in bucket. Changes to the current policy which forbid
+bucket deletion, if files are present are in development and can be found here: https://github.com/aws/aws-cdk/issues/3297
+2) CloudWatch Log Groups for lambda logging. Found on filter: `/aws/lambda/Etl`
+3) s3 CDK folder with your CloudFormation templates. Delete at your discretion. 
+4) Your bootstrap stack asset s3 folder will have some assets in there. Delete/save at your discretion. 
 **Don't delete the bootstrap stack, nor the s3 asset bucket, if you plan to continue using CDK.
-6) Both lambdas are set to run in `logging.DEBUG`, switch if too verbose. See CloudWatch logs for logs. 
+5) Both lambdas are set to run in `logging.DEBUG`, switch if too verbose. See CloudWatch logs for logs. 
 
 ## Here is additional documentation to help you along the way:
 [CDK Documentation](https://docs.aws.amazon.com/cdk/api/latest/)

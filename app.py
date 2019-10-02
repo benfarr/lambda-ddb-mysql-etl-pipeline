@@ -14,15 +14,16 @@ PROD_ENV={
 	"account": "<account_id>"
 }
 
-STAGE=os.environ.get("stage")
+STAGE=os.environ.get("AWS_CDK_ENV")
 
 with open(f"params-{STAGE}.json") as file_obj:
-	stack_params=json.load(fil_obj)
+	stack_params=json.load(file_obj)
 
 app = core.App()
 
-EtlPipelineCdkStack(app
-                     , stack_params['name'],
-                     , env=PRE_PROD_ENV if STAGE == "preprod" else PROD_ENV
+EtlPipelineCdkStack(app,
+                     stack_params['name'],
+                     env=PRE_PROD_ENV if STAGE == "preprod" else PROD_ENV,
+                     stage=STAGE
                      )
 app.synth()

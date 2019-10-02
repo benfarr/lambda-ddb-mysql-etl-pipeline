@@ -8,7 +8,7 @@ from aws_cdk import (
     aws_events_targets as targets,
 )
 
-class EtlPipelineCdkStack(core.Stack): # BenjaminfarrStack
+class EtlPipelineCdkStack(core.Stack):
     """Define the custom CDK stack construct class that inherits from the cdk.Construct base class.
 
     Notes:
@@ -31,14 +31,18 @@ class EtlPipelineCdkStack(core.Stack): # BenjaminfarrStack
                 defined in this scope.
             kwargs: Lots of possibilities
         """
+
+        # example of passing app.py level params to stack class
+        self.stage=kwargs['stage']
+        kwargs={}
+
         super().__init__(scope, id, **kwargs)
 
         # Resources to create
         s3_bucket = s3.Bucket(
             self, "Bucket",
-            bucket_name="asteroids",
+            bucket_name=f"asteroids-{self.stage}",
             versioned=False,
-            public=False,
             removal_policy=core.RemovalPolicy.DESTROY # NOT recommended for production code
         )
 
