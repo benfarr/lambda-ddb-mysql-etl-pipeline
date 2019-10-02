@@ -126,8 +126,7 @@ need to manually delete post-destroy:
 4) s3 CDK folder with your CloudFormation templates. Delete at your discretion. 
 5) Your bootstrap stack asset s3 folder will have some assets in there. Delete/save at your discretion. 
 **Don't delete the bootstrap stack, nor the s3 asset bucket, if you plan to continue using CDK.
-6) There may be some others I'm missing but luckily a slapped either my name or 'asteroids' on everything. Shouldn't be too hard to pin down. 
-7) Both lambdas are set to run in `logging.DEBUG`, switch if too verbose. See CloudWatch logs for logs. 
+6) Both lambdas are set to run in `logging.DEBUG`, switch if too verbose. See CloudWatch logs for logs. 
 
 ## Here is additional documentation to help you along the way:
 [CDK Documentation](https://docs.aws.amazon.com/cdk/api/latest/)
@@ -141,5 +140,3 @@ need to manually delete post-destroy:
 [Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)
 
 [Additional Docs](https://docs.aws.amazon.com/cdk/latest/guide/home.html#additional_docs)
-
-Enjoy!
