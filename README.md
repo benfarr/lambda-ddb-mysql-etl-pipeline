@@ -1,4 +1,4 @@
-# Welcome to my Asteroid CDK Python project!
+# Welcome to this ETL Pipeline CDK Python project example!
 
 This is a CDK Python ETL Pipeline example that produces the AWS resources necessary to achieve the following: 
 1) Dynamically deploy CDK apps to different environments.
