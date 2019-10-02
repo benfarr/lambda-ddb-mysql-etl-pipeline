@@ -33,7 +33,7 @@ It is where we bring the core stack components together before synthesizing our 
 `requirements.txt` — Pip uses this file to install all of the dependencies for this CDK app. 
 In this case, it contains only '-e', which tells pip to install the requirements 
 specified in `setup.py`--I have all requirements listed. 
-It also tells pip to run python `setup.py` develop to install the code in the `cdk_benjaminfarr` module so that it can be edited in place.
+It also tells pip to run python `setup.py` develop to install the code in the `etl_pipeline_cdk` module so that it can be edited in place.
 
 `setup.py` — Defines how this Python package would be constructed and what the dependencies are.
 
@@ -44,7 +44,7 @@ It also tells pip to run python `setup.py` develop to install the code in the `c
 ## Pre-requisites
 #### Keys, Copy & Paste
 1) Submit a request for a NASA API key here (it comes quick!): https://api.nasa.gov/
-2) Navigate to the `cdk_benjaminfarr_stack.py` file and replace this text `<nasa_key_here>`
+2) Navigate to the `etl_pipeline_cdk_stack.py` file and replace this text `<nasa_key_here>`
 with your NASA key that was emailed to you.** 
 3) Navigate to the `app.py` file and replace this text `<acct_id>` with your AWS account id 
 and `<region_id>` with the region you plan to work in--e.g. `us-west-2` for Oregon and `us-east-1` for N. Virginia.
