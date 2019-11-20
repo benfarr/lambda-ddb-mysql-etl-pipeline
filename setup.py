@@ -6,7 +6,7 @@ with open("README.md") as fp:
 
 
 setuptools.setup(
-    name="etl_pipeline_cdk",
+    name="lambda-ddb-mysql-etl-pipeline",
     version="0.0.1",
 
     description="A CDK Python App that defines a .csv & .json file processing pipeline",
@@ -15,8 +15,8 @@ setuptools.setup(
 
     author="Benjamin E. Farr",
 
-    package_dir={"": "etl_pipeline_cdk"},
-    packages=setuptools.find_packages(where="etl_pipeline_cdk"),
+    package_dir={"": "lambda-ddb-mysql-etl-pipeline"},
+    packages=setuptools.find_packages(where="lambda-ddb-mysql-etl-pipeline"),
 
     install_requires=[
         "aws-cdk.core",
@@ -25,7 +25,7 @@ setuptools.setup(
         "aws-cdk.aws-lambda",
         "aws-cdk.aws-dynamodb",
         "aws-cdk.aws-events",
-        "aws-cdk.aws-events-targets",
+        "aws-cdk.aws-events-targets"
     ],
 
     python_requires=">=3.6",
